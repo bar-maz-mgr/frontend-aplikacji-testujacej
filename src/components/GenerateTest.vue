@@ -46,7 +46,6 @@
                 <span v-if="!$v.edt_queries.required">Test Queries are required</span>
                 <span v-else-if="!$v.edt_queries.minValue">Test Queries amount must be a positive number</span>
                 <span v-else-if="!$v.edt_queries.numeric">Test Queries amount must be a numeric value</span>
-              <span v-else-if="!$v.edt_queries.maxValue">Test Queries must not exceed {{maxRequests}}</span>
             </div>
           </div><br>
           <div class="row">
@@ -105,7 +104,6 @@ export default {
         testResultsSize: 0,
         testCallId: 0,
         maxUsers: process.env.VUE_APP_TEST_MAX_USERS,
-        maxRequests:  process.env.VUE_APP_TEST_MAX_REQUESTS
     }
   },
   methods: {
@@ -234,8 +232,7 @@ export default {
       edt_queries: {
         required,
         numeric,
-        minValue: minValue(1),
-        maxValue: maxValue(this.maxRequests)
+        minValue: minValue(1)
       }
     }
   },
