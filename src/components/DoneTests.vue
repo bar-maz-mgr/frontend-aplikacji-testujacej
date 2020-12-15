@@ -118,17 +118,12 @@ export default {
       if(response.status !== 200){
         alert(`${response.status}: ${response.data.error}`);
       } else {
-        this.timer = setInterval((function (){
           this.refresh();
-        }).bind(this), 1000 * 60);
       }
     }catch(e){
       console.log(e);
     }
     this.isComputing = false;
-  },
-  beforeDestroy() {
-    clearInterval(this.timer);
   }
 }
 </script>
