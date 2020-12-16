@@ -174,26 +174,11 @@ export default {
       let response = await this.getDoneTest(this.$route.params.id);
       if(response.status !== 200){
         alert(`${response.status}: ${response.data.error}`);
-      } else {
-        this.timer = setInterval((function (){
-          if(!this.doneTest.is_finished){
-            this.seconds +=1;
-          } else {
-            clearInterval(this.timer);
-          }
-        }).bind(this), 1000);
-        this.refreshTimer = setInterval((function (){
-          this.refresh();
-        }).bind(this), 1000 * 5);
       }
     }catch(e){
       console.log(e);
     }
     this.isComputing = false;
-  },
-  beforeDestroy() {
-    clearInterval(this.timer);
-    clearInterval(this.refreshTimer);
   }
 }
 </script>
